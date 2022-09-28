@@ -1,0 +1,86 @@
+body {
+  background-color: #C1BCBC;
+}
+
+#box {
+  text-align: center;
+}
+
+h1 {
+  color: #492818;
+}
+
+.myclass {
+  width: 40px;
+  height: 40px;
+  display: block;
+  float: left;
+  border: 1px solid black;
+  background-color: grey;
+  box-shadow: inset 5px 5px 10px #FFF, inset -3px -3px 5px #777;
+  cursor: pointer;
+  transition-property: background-color, box-shadow;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+
+.clear {
+  clear: left;
+}
+
+#board {
+  padding-left: 560px;
+}
+
+#board div {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile-clicked {
+  background-color: darkgrey;
+}
+
+#newGame {
+  position: absolute;
+  bottom: 180px;
+  left: 697px;
+  background-color: #BD6565;
+  padding: 20px 30px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#text {
+  position: relative;
+  top: 100px;
+  color: red;
+  font-size: 60px;
+}
+
+.x1 {
+  color: black;
+}
+.x2 {
+  color: blue;
+}
+.x3 {
+  color: yellow;
+}
+.x4 {
+  color: green;
+}
+.x5 {
+  color: brown;
+}
+.x6 {
+  color: purple;
+}
+.x7 {
+  color: pink;
+}
+.x8 {
+  color: red;
+}
