@@ -6,6 +6,8 @@ let minesLocation = [];
 let table = [];
 let gameover = false;
 let numbOfflags = 0;
+let x = [];
+let y = [];
 
 window.onload = function() {
   let board = document.getElementById('board');
@@ -48,6 +50,10 @@ function clickCell() {
   let coordinates = cell.id.split("-");
   let row = parseInt(coordinates[0]);
   let column = parseInt(coordinates[1]);
+
+  x = [row, row, row - 1, row - 1, row - 1, row + 1, row + 1, row + 1];
+  y = [column - 1, column + 1, column - 1, column, column + 1, column - 1, column, column + 1];
+
   verifyMine(row, column);
 }
 
@@ -107,32 +113,18 @@ function verifyMine(row, column) {
 
   let minesFound = 0;
 
-  minesFound += verifyCell(row, column - 1);
-  minesFound += verifyCell(row, column + 1);
-
-  minesFound += verifyCell(row - 1, column - 1);
-  minesFound += verifyCell(row - 1, column);
-  minesFound += verifyCell(row - 1, column + 1);
-
-  minesFound += verifyCell(row + 1, column - 1);
-  minesFound += verifyCell(row + 1, column);
-  minesFound += verifyCell(row + 1, column + 1);
+  for (let i = 0; i < 7; ++i) {
+    minesFound += verifyCell(x[i], y[i]);
+  }
 
   if (minesFound > 0) {
     table[row][column].innerText = minesFound;
     table[row][column].classList.add("x" + minesFound.toString());
   } else {
 
-    verifyMine(row, column - 1);
-    verifyMine(row, column + 1);
-
-    verifyMine(row - 1, column - 1);
-    verifyMine(row - 1, column);
-    verifyMine(row - 1, column + 1);
-
-    verifyMine(row + 1, column - 1);
-    verifyMine(row + 1, column);
-    verifyMine(row + 1, column + 1);
+    for (let i = 0; i < 7; ++i) {
+      verifyMine(x[i], y[i]);
+    }
   }
   if (tilesClicked == lines * columns - numOfmines) {
     youWon();
@@ -147,6 +139,7 @@ function verifyCell(row, column) {
   }
   return 0;
 }
+
 
 function gameOver() {
   gameover = true;
